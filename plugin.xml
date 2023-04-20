@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova.plugin.camera" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>CameraPlugin</name>
+    <js-module name="CameraPlugin" src="www/index.js">
+        <clobbers target="CameraPlugin" />
+    </js-module>
+	
+	
+	 <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CameraPlugin">
+                <param name="android-package" value="cordova.plugin.camera.CameraPlugin"/>
+            </feature>
+        </config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/*">
+		    <uses-feature android:name="android.hardware.camera" android:required="true" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"  />
+		</config-file>
+		
+        <config-file target="AndroidManifest.xml" parent="application">
+          <provider
+              android:name="androidx.core.content.FileProvider"
+              android:authorities="${applicationId}.fileprovider"
+              android:exported="false"
+              android:grantUriPermissions="true" >
+              <meta-data
+                  android:name="android.support.FILE_PROVIDER_PATHS"
+                  android:resource="@xml/file_paths"/>
+          </provider>
+        </config-file>
+			<source-file src="src/android/CameraPlugin.java" target-dir="src/cordova/plugin/camera/CameraPlugin"/>
+            <source-file src="src/android/ExifHelper.java" target-dir="src/cordova/plugin/camera/CameraPlugin"/>
+            <source-file src="src/android/xml/file_paths.xml" target-dir="res/xml" />
+    </platform>
+	
+</plugin>
