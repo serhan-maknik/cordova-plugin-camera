@@ -19,13 +19,13 @@
 ```js
  function takePicture(){
     CameraPlugin.getPicture({
-        quality:70,
-        requiredSize:80
+         quality:70,
+         requiredSize:80
     },function(imageData){    
-      var image = document.getElementById('myImage');
-      image.src = "data:image/jpeg;base64," + imageData;
-    },function(a){
-        console.log(a);
+         var image = document.getElementById('myImage');
+         image.src = "data:image/jpeg;base64," + imageData;
+    },function(message){
+        console.log(message);
     })
 }
 ```
