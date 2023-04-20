@@ -2,7 +2,7 @@
 
 ## Install
    ```
-   cordova plugin add cordova-plugin-service
+   cordova plugin add cordova-plugin-camera
    ```
 ## Html
 ```html
